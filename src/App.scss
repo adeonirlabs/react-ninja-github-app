@@ -1,0 +1,164 @@
+/* Base */
+:root {
+  --black: #24292e;
+  --white: #fff;
+  --lighter: #e8e9ec;
+  --light: #ced5e0;
+  --gray: #818691;
+  --blue: #4770ff;
+  --border-radius: 0.325rem;
+}
+
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--light);
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+/* App */
+.app {
+  background: var(--white);
+  border-radius: 1.5rem;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  padding: 3rem;
+  width: 600px;
+}
+
+/* Search */
+.search {
+  input {
+    border-radius: var(--border-radius);
+    border: 2px solid var(--blue);
+    font-size: 1.125rem;
+    height: 4.25rem;
+    padding: 0 2rem;
+    width: 100%;
+
+    &::placeholder {
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    &:focus::placeholder {
+      color: var(--light);
+    }
+  }
+}
+
+/* Userinfo */
+.user-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+
+  img {
+    border-radius: var(--border-radius);
+    height: 12.5rem;
+    margin-bottom: 1rem;
+    width: 12.5rem;
+  }
+
+  h1 {
+    color: var(--black);
+    font-size: 2.25rem;
+    font-weight: normal;
+    margin-bottom: 0.125rem;
+  }
+
+  a {
+    color: var(--gray);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+}
+
+.repos-info {
+  ul {
+    display: flex;
+  }
+
+  li {
+    color: var(--gray);
+    font-size: 0.875rem;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    span {
+      background: var(--lighter);
+      border-radius: 1rem;
+      color: var(--black);
+      font-weight: bold;
+      margin-left: 0.25rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
+/* Actions */
+.actions {
+  column-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 2rem;
+
+  button {
+    background: var(--blue);
+    border-radius: var(--border-radius);
+    border: 0;
+    border: 2px solid var(--blue);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.125rem;
+    height: 3.25rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--white);
+      border: 2px solid var(--blue);
+      color: var(--blue);
+    }
+  }
+}
+
+/* Repos, Stars */
+.repos,
+.stars {
+  h2 {
+    color: var(--black);
+    margin-bottom: 0.5rem;
+  }
+
+  li {
+    color: var(--gray);
+  }
+
+  a {
+    color: var(--gray);
+    line-height: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+}

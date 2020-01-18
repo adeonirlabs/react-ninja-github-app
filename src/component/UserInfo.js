@@ -3,14 +3,20 @@ import React from 'react'
 const UserInfo = () => (
   <div className='user-info'>
     <img src='https://avatars3.githubusercontent.com/u/3428733?v=4' alt='adeonir' />
-    <h1 className='username'>
-      <a href='https://github.com/adeonir'>Adeonir Kohl</a>
-    </h1>
+    <h1>Adeonir Kohl</h1>
+    <a href='https://github.com/adeonir'>adeonir</a>
+
     <div className='repos-info'>
       <ul>
-        <li>Repositórios: 35</li>
-        <li>Seguidores: 99</li>
-        <li>Seguindo: 137</li>
+        <li>
+          Repositories: <span>35</span>
+        </li>
+        <li>
+          Followers: <span>99</span>
+        </li>
+        <li>
+          Following: <span>137</span>
+        </li>
       </ul>
     </div>
   </div>
