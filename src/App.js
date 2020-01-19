@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import Search from './component/Search'
 import UserInfo from './component/UserInfo'
@@ -13,8 +12,9 @@ class App extends Component {
     userinfo: {
       fullname: 'Adeonir Kohl',
       username: 'adeonir',
+      avatar: 'https://avatars3.githubusercontent.com/u/3428733?v=4',
       repos: 35,
-      follower: 99,
+      followers: 99,
       following: 137
     },
     repos: [
@@ -60,12 +60,6 @@ class App extends Component {
       </div>
     )
   }
-}
-
-App.propTypes = {
-  userinfo: PropTypes.object.isRequired,
-  repos: PropTypes.array.isRequired,
-  stars: PropTypes.array.isRequired
 }
 
 export default App
