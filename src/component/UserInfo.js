@@ -28,7 +28,7 @@ UserInfo.propTypes = {
     fullname: PropTypes.string,
     username: PropTypes.string,
     avatar: PropTypes.string,
-    repos: PropTypes.array,
+    repos: PropTypes.number,
     followers: PropTypes.number,
     following: PropTypes.number
   }).isRequired
