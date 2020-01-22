@@ -6,6 +6,7 @@ import Search from './component/Search'
 import UserInfo from './component/UserInfo'
 import Actions from './component/Actions'
 import Repos from './component/Repos'
+import Loading from './component/Loading'
 
 import './App.scss'
 
@@ -15,14 +16,22 @@ class App extends Component {
   state = {
     userinfo: null,
     repos: [],
-    starred: []
+    starred: [],
+    isFetching: false
   }
 
   handleSearch(e) {
+    const target = e.target
     const value = e.target.value
     const key = e.which || e.keyCode
     const enter = 13
+
     if (key === enter) {
+      this.setState({
+        isFetching: true,
+        userinfo: null
+      })
+
       ajax()
         .get(`${url}/${value}`)
         .then(result => {
@@ -39,13 +48,18 @@ class App extends Component {
             starred: []
           })
         })
+        .always(() => {
+          this.setState({ isFetching: false })
+          target.value = ''
+        }
+        )
     }
   }
 
   getRepos(type) {
     const { username } = this.state.userinfo
 
-    return e => {
+    return () => {
       ajax()
         .get(`${url}/${username}/${type}`)
         .then(result => {
@@ -60,11 +74,12 @@ class App extends Component {
   }
 
   render() {
-    const { userinfo, repos, starred } = this.state
+    const { userinfo, repos, starred, isFetching } = this.state
 
     return (
       <div className='app'>
-        <Search handleSearch={e => this.handleSearch(e)} />
+        <Search handleSearch={e => this.handleSearch(e)} isDisabled={isFetching} />
+        {isFetching && <Loading />}
         {!!userinfo && <UserInfo userinfo={userinfo} />}
         {!!userinfo && <Actions handleRepos={this.getRepos('repos')} handleStarred={this.getRepos('starred')} />}
         {!!repos.length && <Repos className='repos' title='Repositórios' repos={repos} />}
@@ -77,7 +92,8 @@ class App extends Component {
 App.propTypes = {
   userinfo: PropTypes.object,
   repos: PropTypes.array,
-  starred: PropTypes.array
+  starred: PropTypes.array,
+  isFetching: PropTypes.bool.isRequired
 }
 
 export default App
